@@ -1,0 +1,10 @@
+﻿<RevitAddIns>
+  <AddIn Type="Application">
+    <Assembly>C:\RRBTest\Addins\RevitRemoteRunner.dll</Assembly>
+    <AddInId>dbc41e1e-e048-481c-9aa7-283ad64e8ef3</AddInId>
+    <VendorId>RODH</VendorId>
+    <Name>Revit Remote Runner</Name>
+    <VendorDescription>Rod Howarth</VendorDescription>
+    <FullClassName>RevitRemoteRunner.RemoteRunner</FullClassName>
+  </AddIn>
+</RevitAddIns>
