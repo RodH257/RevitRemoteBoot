@@ -1,0 +1,11 @@
+Revit Server stores every model on the central and local servers (as long as they have been accessed on that server), meaning that across a number of servers you have the Revit file on that machine, ready to be quickly opened. This opens up a number of potential uses. 
+
+Revit Remote Boot is an example of one of these uses. Put simply, it is a couple of interacting programs that allow you to perform an operation on a Revit model from a script. 
+
+Take a look at the AU Class Video for a full demonstration of what it does. 
+
+Basically your application can save an xml file in a certain directory, which ads a ‘job’ to the queue. Then, using the RevitServerToolCommand, you can, from a batch file, create a local copy of the Revit Model you want to work on, and open it in Revit. From there, a Revit API add-in will detect that you’ve opened a model that corresponds to a job, and will run the other Revit API add-in that was specified in the job file. After this is done, the job is marked complete, and Revit is closed. 
+
+In my example, I’ve done a simple export to DWF of the model, the idea being you could set this up to run at 1am every night, and export the DWF model to a certain location – perhaps for viewing in Design Review on mobile devices. However, you could use it for any Revit API add-in. For instance, you could have a high powered server which you setup as a local Revit Server just purely to run this Revit Remote Boot. On this server you could create a job to run a structural analysis add-in, or other computationally expensive stuff. This way you can setup your own “cloud”, running Revit directly. You could also run certain audits on a model, for example, you could create an add-in that counts the number of warnings present in the model and saves this to a database, for displaying in a ‘hall of shame’ on your company intranet. 
+
+This is highly experimental, and has some pitfalls, so should be considered as a proof of concept, rather than a production ready program. The main pitfall is that any errors that come up are shown as dialog boxes, and there is no easy way to deal with this in Revit. To get around this I’ve used AutoHotKey (http://www.autohotkey.com/) to detect certain dialogs and close them, but if there are unexpected ones, it will fall over. 
